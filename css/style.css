@@ -2,6 +2,24 @@ body {
     font-family: "Microsoft JhengHei";
 }
 
-div.talkbearininderbar {
-    margin: 20px 10px;
+.form-group {
+    margin: 0;
+}
+
+.msg {
+    color: #112211; width: 100%; bottom: 0; height: 30px; left: 0; outline: none; padding: 5px; position: fixed;
+}
+.msg-box {
+    display: block; padding-top: 80px; height: 100%; overflow: scroll;
+}
+.no-padding {
+    padding: 0;
+}
+
+input[type=color] {
+    height: 38px;
+}
+
+header {
+    position: fixed; top: 0; left:0px;
 }

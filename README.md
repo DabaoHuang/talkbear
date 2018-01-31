@@ -10,3 +10,6 @@ npm install --save socket.io
 
 # START - server.js
 node server.js
+
+# Sign in
+http://ip.dns/index.html
