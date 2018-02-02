@@ -10,7 +10,7 @@ body {
     color: #112211; width: 100%; bottom: 0; height: 30px; left: 0; outline: none; padding: 5px; position: fixed;
 }
 .msg-box {
-    display: block; padding-top: 80px; height: 100%; overflow: scroll;
+    display: block; padding-top: 80px; height: 100%; overflow-y: scroll;
 }
 .no-padding {
     padding: 0;

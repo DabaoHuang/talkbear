@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -21,27 +22,50 @@
         <!-- modernizr 2.8.3 -->
         <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
         <!-- scrolling -->
-        <script lang="javascript" src="/js/CCscroll.js"></script>
+        <script lang="javascript" src="http://localhost/js/CCscroll.js"></script>
         <!-- countJS -->
-        <script language="JavaScript" src="/js/count.js"></script>
+        <script language="JavaScript" src="http://localhost/js/count.js"></script>
         <!-- Resize -->
-        <script language="JavaScript" src="/js/Cresize.js"></script>
+        <script language="JavaScript" src="http://localhost/js/Cresize.js"></script>
         <!-- style -->
-        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="http://localhost/css/style.css" />
         <!-- socket.io -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 
         <script>
-            var socket = io("http://localhost/");
+
+            var socket = io();
+            var stock = new Array();
 
             $(function(){
 
-                $("input[name=msg]").keyup(function(event) {
-                    if(event.keyCode == 13) {
-                        socket.emit('talk');
-                    }
-                });
+                var loginname = prompt("請輸入你的暱稱：");
+                $("input[name=username]").val(loginname);
 
+                $("input[name=msg],input[name=username]").keyup(function(event) {
+                    
+                    if(event.keyCode == 13) {
+                        let username  = '(' + $("select[name=age]").val() + ') ' + $("select[name=location]").val() + ' ' + $("input[name=username]").val();
+                        let msg       = $("input[name=msg]").val();
+                        let msg_color = $("input[type=color]").val();
+
+                        stock['name']      = username;
+                        stock['msg']       = msg;
+                        stock['msg_color'] = msg_color;
+
+                        console.log(stock.toLocaleString());
+                        console.log(username);
+                        socket.emit('talk',username,msg,msg_color);
+
+                        $("input[name=msg]").val('');
+
+                    } // end if
+                }); // end function msg
+
+            }); // end function document
+
+            socket.on('paste',function(data) {
+                 $("div.msg-box").prepend(data);
             });
             
 
