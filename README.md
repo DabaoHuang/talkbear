@@ -1,4 +1,4 @@
-# talkbear - 說說熊聊天室 Ver.0.2
+# talkbear - 說說熊聊天室 Ver.0.3
 
 一個試著用 Socket.io, Node.js, bootstrap 4, jQuery 打造的多人聊天室
 
@@ -24,6 +24,11 @@ http://locahost:3000
 ### Ver.0.2
  - index.js : 'msg.txt' appendFile => preppendFile
  - 多使用 npm 套件 prepend-file
+ - 登入後自動載入先前的聊天記錄
+
+### Ver.0.3
+ - 新增進入聊天室的歡迎字詞
+ - 新增離開聊天室的通知
 
 # Features
  - 私密聊天

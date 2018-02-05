@@ -62,6 +62,19 @@
                     } // end if
                 }); // end function msg
 
+                $(document).mouseleave(function(e){
+                    window.onbeforeunload = function () {
+                        window.onunload = function () {
+                            socket.emit('exit',$("input[name=username]").val());
+                        }
+                        return '你確定要登出@@?'
+                    }
+                });
+
+                console.log(loginname);
+
+                socket.emit('userin', loginname);
+
             }); // end function document
 
             socket.on('paste',function(data) {

@@ -33,14 +33,16 @@ io.on('connection' , function (socket) {
 
   // NewUserIn: 使用者進房間
   socket.on('userin',function(name) {
-      socket.username = name;
+      var date = new Date;    
+      // socket.username = name;
       let address = socket.handshake.address;
-      let msg = " New user " + name + " is logged. From " + address + ".";
-      console.log(msg);
-      io.emit('paste',{
+      let output = "<div style='color:#0080ff;'>" + dateformat(date,"yyyy, mm, dS h:MM:ss") + ' ' + name + " 進入了聊天室。.</div>";
+      console.log(name + " 進入了聊天室。 " + address);
+      io.emit('paste',output);
+      /*io.emit('paste',{
           username: socket.username
-      });
-      log(msg);
+      });*/
+      log(output);
   }); // end socket.on function userin
 
   // talk: 大廳發話廣播
@@ -57,9 +59,10 @@ io.on('connection' , function (socket) {
   // exit: 使用者掰掰
   socket.on('exit',function(name){
       var date = new Date;
-      console.log(name + ' was quit.');
-      io.emit('paste',"<div>" + name + "依依不捨的離開惹 ... </div>");
-      log(name + " was quit.");
+      let output = "<div style='color:red;'>" + dateformat(date,"yyyy, mm, dS h:MM:ss") + ' ' + name + " 依依不捨的離開惹 ... </div>";
+      console.log(output);
+      io.emit('paste', output);
+      log(output);
   });
 
 }); // end io.on connection function
